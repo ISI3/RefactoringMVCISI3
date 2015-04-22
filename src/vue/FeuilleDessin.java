@@ -15,7 +15,7 @@ import java.io.*;
  * @version 2.0
  */
 
-public class FeuilleDessin extends JPanel {
+public class FeuilleDessin extends JPanel implements Observer{
 	private ArrayList<Tortue> tortues; // la liste des tortues enregistrees
 	
 	public FeuilleDessin() {
@@ -52,4 +52,11 @@ public class FeuilleDessin extends JPanel {
 			t.drawTurtle(g);
 		}
 	}
+
+    @Override
+    public void update(Observable o, Object arg) {
+        for(Tortue t : tortues){
+            t.notify();
+        }
+    }
 }

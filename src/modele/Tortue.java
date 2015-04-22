@@ -23,7 +23,7 @@ import java.io.*;
 /** La classe Tortue qui se deplace en coordonnees polaires
 **/
 
-public class Tortue
+public class Tortue extends Observable 
 {
 	// Classe interne : segment avec couleur
 	protected class Segment {
