@@ -30,28 +30,34 @@ public class Controleur implements ActionListener {
         // actions des boutons du haut
         switch (c) {
             case "Avancer":
-                System.out.println("command avancer");
+                System.out.println("Avancer");
                 try {
                     int v = Integer.parseInt(simpleLogo.getInputValue());
                     tortue.avancer(v);
                 } catch (NumberFormatException ex) {
                     System.err.println("ce n'est pas un nombre : " + simpleLogo.getInputValue());
-                }   break;
+                }
+                break;
             case "Droite":
+                System.out.println("Droite");
                 try {
                     int v = Integer.parseInt(simpleLogo.getInputValue());
                     tortue.droite(v);
                 } catch (NumberFormatException ex) {
                     System.err.println("ce n'est pas un nombre : " + simpleLogo.getInputValue());
-            }   break;
+                }
+                break;
             case "Gauche":
+                System.out.println("Gauche");
                 try {
                     int v = Integer.parseInt(simpleLogo.getInputValue());
                     tortue.gauche(v);
                 } catch (NumberFormatException ex) {
                     System.err.println("ce n'est pas un nombre : " + simpleLogo.getInputValue());
-                }   break;
+                }
+                break;
             case "Effacer":
+                System.out.println("Effacer");
                 tortue.setPosition(
                         simpleLogo.getFeuille().getSize().width / 2,
                         simpleLogo.getFeuille().getSize().height / 2);

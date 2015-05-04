@@ -1,7 +1,6 @@
 package modele;
 
 import java.util.Observable;
-import vue.SimpleLogo;
 
 /**
  * ***********************************************************************
@@ -25,6 +24,7 @@ public class Tortue extends Observable {
 
     private PositionTortue positionTortue;
     private double direction;
+    protected static final double ratioDegRad = 0.0174533;
 
     public PositionTortue getPosition() {
         return positionTortue;
@@ -66,26 +66,33 @@ public class Tortue extends Observable {
     }
 
     public void avancer(int dist) {
-        positionTortue.setX((int) Math.round(positionTortue.getX() + dist * Math.cos(Math.toRadians(direction))));
-        positionTortue.setY((int) Math.round(positionTortue.getY() + dist * Math.sin(Math.toRadians(direction))));
+        int x = (int) Math.round(positionTortue.getX() + dist * Math.cos(ratioDegRad * direction));
+        int y = (int) Math.round(positionTortue.getY() + dist * Math.sin(ratioDegRad * direction));
+        System.out.println(x);
+        positionTortue.setX(x);
+        positionTortue.setY(y);
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public void droite(int ang) {
         direction = (direction + ang) % 360;
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public void gauche(int ang) {
         direction = (direction - ang) % 360;
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public void reset() {
-        positionTortue.setX(0);
-        positionTortue.setY(0);
+        positionTortue.setX(500 / 2);
+        positionTortue.setY(400 / 2);
         direction = -90;
-    }
-
-    public void addObserver(SimpleLogo simpleLogo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.setChanged();
+        this.notifyObservers();
     }
 
 }

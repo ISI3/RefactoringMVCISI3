@@ -142,13 +142,8 @@ public class SimpleLogo extends JFrame implements Observer {
 
         getContentPane().add(feuille, "Center");
 
-        // Creation de la tortue
-        Tortue tortue = new Tortue();
-
         // Deplacement de la tortue au centre de la feuille
-        courante = tortue;
-        feuille.addTortue(tortue);
-
+        feuille.addTortue(this.courante);
         pack();
         setVisible(true);
     }
