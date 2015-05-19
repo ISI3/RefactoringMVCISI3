@@ -66,6 +66,10 @@ public class Controleur implements ActionListener {
             case "Quitter":
                 simpleLogo.quitter();
                 break;
+            case "Ajouter":
+                System.out.println("Ajouter");
+                TortueAmelioree t = new TortueAmelioree(simpleLogo.getInputName().getText());
+                break;
         }
 
         simpleLogo.getFeuille().repaint();

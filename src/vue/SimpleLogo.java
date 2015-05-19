@@ -32,6 +32,8 @@ public class SimpleLogo extends JFrame implements Observer {
     private Tortue courante;
     private JTextField inputValue;
     private Controleur controleur;
+    
+    private JTextField inputName;
 
     public FeuilleDessin getFeuille() {
         return feuille;
@@ -96,6 +98,14 @@ public class SimpleLogo extends JFrame implements Observer {
                 //courante.setColor(n);
             }
         });
+        
+        JLabel nom = new JLabel(" Nom : ");
+        toolBar.add(nom);
+        setInputName(new JTextField(5));
+        toolBar.add(getInputName());
+        
+        addButton(toolBar, "Ajouter", "Ajouter Tortue", null);
+
 
         // Menus
         JMenuBar menubar = new JMenuBar();
@@ -199,5 +209,19 @@ public class SimpleLogo extends JFrame implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         this.getFeuille().repaint();
+    }
+
+    /**
+     * @return the inputName
+     */
+    public JTextField getInputName() {
+        return inputName;
+    }
+
+    /**
+     * @param inputName the inputName to set
+     */
+    public void setInputName(JTextField inputName) {
+        this.inputName = inputName;
     }
 }

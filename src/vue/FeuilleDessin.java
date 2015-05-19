@@ -2,6 +2,7 @@ package vue;
 
 import modele.*;
 import java.awt.*;
+import java.text.AttributedCharacterIterator;
 import javax.swing.*;
 import java.util.*;
 
@@ -82,5 +83,10 @@ public class FeuilleDessin extends JPanel {
         arrow.addPoint(p2.x, p2.y);
         g.setColor(Color.green);
         g.fillPolygon(arrow);
+        
+        if(t instanceof TortueAmelioree){
+            TortueAmelioree to = (TortueAmelioree) t;
+            g.drawString(to.getNom(), to.getPosition().getX() + 10, to.getPosition().getY());
+        }
     }
 }

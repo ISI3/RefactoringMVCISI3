@@ -1,5 +1,6 @@
 package modele;
 
+import java.awt.Color;
 import java.util.Observable;
 
 /**
@@ -25,6 +26,7 @@ public class Tortue extends Observable {
     private PositionTortue positionTortue;
     private double direction;
     protected static final double ratioDegRad = 0.0174533;
+    private Color couleur;
 
     public PositionTortue getPosition() {
         return positionTortue;
@@ -50,10 +52,19 @@ public class Tortue extends Observable {
     public void setDirection(double direction) {
         this.direction = direction;
     }
+    
+    public Tortue(PositionTortue position, double direction, Color couleur) {
+        this.positionTortue = position;
+        this.direction = direction;
+        this.couleur = couleur;
+        this.setChanged();
+        this.notifyObservers();
+    }
 
     public Tortue(PositionTortue position, double direction) {
         this.positionTortue = position;
         this.direction = direction;
+        this.couleur = Color.BLUE;
         this.setChanged();
         this.notifyObservers();
     }
@@ -61,6 +72,7 @@ public class Tortue extends Observable {
     public Tortue() {
         this.positionTortue = new PositionTortue(500 / 2, 400 / 2);
         this.direction = -90;
+        this.couleur = Color.BLUE;
         this.setChanged();
         this.notifyObservers();
     }
@@ -93,6 +105,20 @@ public class Tortue extends Observable {
         direction = -90;
         this.setChanged();
         this.notifyObservers();
+    }
+
+    /**
+     * @return the couleur
+     */
+    public Color getCouleur() {
+        return couleur;
+    }
+
+    /**
+     * @param couleur the couleur to set
+     */
+    public void setCouleur(Color couleur) {
+        this.couleur = couleur;
     }
 
 }
