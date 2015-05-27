@@ -65,7 +65,7 @@ public class TortueAmelioree extends Tortue {
     private void voisin(){
         for (Tortue t : listTortuesConnues){
             if (this.getDistance(t) <= 15){
-		System.out.println("Salut "+((TortueAmelioree)t).getNom()+"!");
+		System.out.println(this.getNom() + " saute "+((TortueAmelioree)t).getNom()+"!");
 //		t.droite(45); t.avancer(10); //Est ce qu'il faut faire ça ?
             }
 	}
@@ -97,6 +97,12 @@ public class TortueAmelioree extends Tortue {
      */
     public void setNom(String nom) {
         this.nom = nom;
+    }
+    
+     @Override
+    public void avancer(int dist) {
+        super.avancer(dist);
+        this.voisin();
     }
     
 }
