@@ -14,6 +14,25 @@ public class Jeu extends Observable {
         this.tortues = new ArrayList<>();
     }
 
+    public Jeu(Tortue tortueCourante) {
+        this.tortues = new ArrayList<>();
+        this.tortueCourante = tortueCourante;
+        this.addTortue(this.tortueCourante);
+    }
+
+    public Jeu(List<Tortue> tortues, Tortue tortueCourante) {
+        this.tortues = tortues;
+        this.tortueCourante = tortueCourante;
+        this.addTortue(this.tortueCourante);
+    }
+
+    public Jeu(List<Tortue> tortues, Tortue tortueCourante, TortueBalle balle) {
+        this.tortues = tortues;
+        this.tortueCourante = tortueCourante;
+        this.addTortue(this.tortueCourante);
+        this.balle = balle;
+    }
+
     public void addTortue(Tortue t) {
         for (Tortue t1 : tortues) {
             if (t1 instanceof TortueAmelioree) {
@@ -32,25 +51,6 @@ public class Jeu extends Observable {
 
     public void setTortues(List<Tortue> tortues) {
         this.tortues = tortues;
-    }
-
-    public Jeu(Tortue tortueCourante) {
-        this.tortues = new ArrayList<>();
-        this.addTortue(tortueCourante);
-        this.tortueCourante = tortueCourante;
-    }
-
-    public Jeu(List<Tortue> tortues, Tortue tortueCourante) {
-        this.tortues = tortues;
-        this.tortueCourante = tortueCourante;
-        this.addTortue(this.tortueCourante);
-    }
-
-    public Jeu(List<Tortue> tortues, Tortue tortueCourante, TortueBalle balle) {
-        this.tortues = tortues;
-        this.tortueCourante = tortueCourante;
-        this.addTortue(this.tortueCourante);
-        this.balle = balle;
     }
 
     public Tortue getTortueCourante() {
