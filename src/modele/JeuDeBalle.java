@@ -23,7 +23,7 @@ public class JeuDeBalle extends Observable implements Runnable {
     @Override
     public void run() {
         Random rand = new Random();
-        while (Controleur.SIMULATION_ON) {
+        while (Controleur.JEU_EN_COURS) {
             for (Tortue t : this.jeu.getTortues()) {
                 if (t != this.jeu.getTortueBalle() && t != this.jeu.getTortueCourante()) {
                     if (rand.nextInt(6) > 1) {

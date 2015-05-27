@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 
 public class Controleur extends MouseAdapter implements ActionListener {
 
-    public static boolean SIMULATION_ON = false;
+    public static boolean JEU_EN_COURS = false;
 
     private SimpleLogo simpleLogo;
     private Jeu jeu;
@@ -81,8 +81,7 @@ public class Controleur extends MouseAdapter implements ActionListener {
                 t.notifyObservers();
                 break;
             case "Jouer":
-                simpleLogo.getFeuille().reset();
-                
+                simpleLogo.getFeuille().reset();                
                 jeuDeBalle = JeuFactory.creerJeuDeBalle(6);
                 this.jeu = jeuDeBalle.getJeu();
                 this.jeu.getTortueCourante().addObserver(simpleLogo);

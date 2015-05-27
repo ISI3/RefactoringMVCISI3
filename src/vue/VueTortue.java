@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vue;
 
 import java.awt.Color;
@@ -12,10 +7,7 @@ import java.awt.Polygon;
 import modele.Tortue;
 import modele.TortueAmelioree;
 
-/**
- *
- * @author Jérémy
- */
+
 public class VueTortue extends AbstractTortue{
     
     protected static final int rp = 10, rb = 5;
