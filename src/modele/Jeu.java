@@ -17,6 +17,10 @@ public class Jeu extends Observable {
 
 	private List<Tortue> tortues;
         private Tortue tortueCourante;
+        
+        public Jeu(){
+		this.tortues = new ArrayList<>(); 
+	}
 	
 	public Jeu(Tortue t){
 		this.tortues = new ArrayList<>();

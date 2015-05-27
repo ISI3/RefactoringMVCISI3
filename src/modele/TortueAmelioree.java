@@ -37,13 +37,22 @@ public class TortueAmelioree extends Tortue {
         }
     }
     
-    
+    public TortueAmelioree(PositionTortue position, double direction, Color couleur){
+        super(position, direction, couleur);
+        NUMERO++;
+        this.listTortuesConnues = new ArrayList<Tortue>();
+        this.nom = "Tortue "+NUMERO;
+    }
     
     public TortueAmelioree(PositionTortue position, double direction, Color couleur, String nom){
         super(position, direction, couleur);
         NUMERO++;
         this.listTortuesConnues = new ArrayList<Tortue>();
-        this.nom = nom;
+        if(nom != null && nom != "" && !nom.isEmpty()){
+            this.nom = nom;
+        }else{
+            this.nom = "Tortue "+NUMERO;
+        }
     }
     
     public void removeTortue(Tortue t){

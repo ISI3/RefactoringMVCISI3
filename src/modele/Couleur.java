@@ -16,6 +16,7 @@ public class Couleur {
             public static String[] colorStrings = {"noir", "bleu", "cyan", "gris fonce", "rouge",
             "vert", "gris clair", "magenta", "orange",
             "gris", "rose", "jaune"};
+            
 	
 	public static Color decodeColor(String c) {
         	switch(c) {
