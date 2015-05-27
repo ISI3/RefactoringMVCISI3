@@ -6,7 +6,6 @@
 package modele;
 
 import java.awt.Color;
-import java.awt.List;
 import java.util.ArrayList;
 
 /**
@@ -17,20 +16,20 @@ public class TortueAmelioree extends Tortue {
     
     public static int NUMERO = 0;
     
-    private ArrayList<Tortue> listTortues;
+    private ArrayList<Tortue> listTortuesConnues;
     private String nom;
     
     public TortueAmelioree(){
         super();
         NUMERO++;
-        this.listTortues = new ArrayList<Tortue>();
+        this.listTortuesConnues = new ArrayList<Tortue>();
         this.nom = "Tortue "+NUMERO;
     }
     
     public TortueAmelioree(String nom){
         super();
         NUMERO++;
-        this.listTortues = new ArrayList<Tortue>();
+        this.listTortuesConnues = new ArrayList<Tortue>();
         if(nom != null && nom != ""){
             this.nom = nom;
         }else{
@@ -41,19 +40,19 @@ public class TortueAmelioree extends Tortue {
     public TortueAmelioree(PositionTortue position, double direction, Color couleur, String nom){
         super(position, direction, couleur);
         NUMERO++;
-        this.listTortues = new ArrayList<Tortue>();
+        this.listTortuesConnues = new ArrayList<Tortue>();
         this.nom = nom;
     }
     
     private void removeTortue(Tortue t){
-        if(getListTortues() != null && getListTortues().contains(t)){
-            getListTortues().remove(t);
+        if(getListTortuesConnues() != null && getListTortuesConnues().contains(t)){
+            getListTortuesConnues().remove(t);
         }
     }
     
     private void addTortue(Tortue t){
-        if(getListTortues() != null){
-            getListTortues().add(t);
+        if(getListTortuesConnues() != null){
+            getListTortuesConnues().add(t);
         }
     }
     
@@ -62,7 +61,7 @@ public class TortueAmelioree extends Tortue {
     }
     
     private void voisin(){
-        for (Tortue t : listTortues){
+        for (Tortue t : listTortuesConnues){
             if (this.getDistance(t) <= 15){
 		System.out.println("Salut "+((TortueAmelioree)t).getNom()+"!");
 //		t.droite(45); t.avancer(10); //Est ce qu'il faut faire ça ?
@@ -73,15 +72,15 @@ public class TortueAmelioree extends Tortue {
     /**
      * @return the listTortues
      */
-    public ArrayList<Tortue> getListTortues() {
-        return listTortues;
+    public ArrayList<Tortue> getListTortuesConnues() {
+        return listTortuesConnues;
     }
 
     /**
      * @param listTortues the listTortues to set
      */
-    public void setListTortues(ArrayList<Tortue> listTortues) {
-        this.listTortues = listTortues;
+    public void setListTortuesConnues(ArrayList<Tortue> listTortues) {
+        this.listTortuesConnues = listTortues;
     }
 
     /**

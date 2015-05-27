@@ -16,9 +16,11 @@ import java.util.Observable;
 public class Jeu extends Observable {
 
 	private List<Tortue> tortues;
+        private Tortue tortueCourante;
 	
-	public Jeu(){
+	public Jeu(Tortue t){
 		this.tortues = new ArrayList<>();
+                this.tortueCourante = t;
 	}
 	
 	public void addTortue(Tortue t){
@@ -34,6 +36,20 @@ public class Jeu extends Observable {
         public void setTortues(List<Tortue> tortues){
 		this.tortues = tortues;
 	}
+
+    /**
+     * @return the tortueCourante
+     */
+    public Tortue getTortueCourante() {
+        return tortueCourante;
+    }
+
+    /**
+     * @param tortueCourante the tortueCourante to set
+     */
+    public void setTortueCourante(Tortue tortueCourante) {
+        this.tortueCourante = tortueCourante;
+    }
 	
 	
 }

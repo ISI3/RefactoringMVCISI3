@@ -46,7 +46,7 @@ public class SimpleLogo extends JFrame implements Observer {
     public SimpleLogo(Controleur controleur) {
         super("un logo tout simple");
         this.controleur = controleur;
-        this.courante = controleur.getTortue();
+        this.courante = controleur.getJeu().getTortueCourante();
         this.logoInit();
         this.setVisible(true);
 
@@ -153,7 +153,7 @@ public class SimpleLogo extends JFrame implements Observer {
         getContentPane().add(feuille, "Center");
 
         // Deplacement de la tortue au centre de la feuille
-        feuille.addTortue(this.courante);
+        feuille.addTortue(new VueTortue(this.courante));
         pack();
         setVisible(true);
     }
