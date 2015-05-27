@@ -25,6 +25,12 @@ public class Jeu extends Observable {
 	}
 	
 	public void addTortue(Tortue t){
+            for(Tortue t1 : tortues){
+                if(t1 instanceof TortueAmelioree){
+                    TortueAmelioree t2 = (TortueAmelioree) t1;
+                    t2.addTortue(t);
+                }
+            }
 		tortues.add(t);		
 		setChanged();
 		notifyObservers();

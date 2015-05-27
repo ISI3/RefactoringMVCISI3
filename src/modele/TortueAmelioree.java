@@ -46,13 +46,13 @@ public class TortueAmelioree extends Tortue {
         this.nom = nom;
     }
     
-    private void removeTortue(Tortue t){
+    public void removeTortue(Tortue t){
         if(getListTortuesConnues() != null && getListTortuesConnues().contains(t)){
             getListTortuesConnues().remove(t);
         }
     }
     
-    private void addTortue(Tortue t){
+    public void addTortue(Tortue t){
         if(getListTortuesConnues() != null){
             getListTortuesConnues().add(t);
         }
@@ -81,7 +81,8 @@ public class TortueAmelioree extends Tortue {
                         System.out.println("Deux tortues de base se sautent");
                     }
                 }		
-		t.droite(Utils.random(0, 360)); t.avancer(Utils.random(10, 150));
+		t.droite(Utils.random(0, 360)); 
+                t.avancer(Utils.random(10, 150));
             }
 	}
     }
