@@ -9,35 +9,17 @@ import java.util.Observer;
 import modele.Couleur;
 import modele.Tortue;
 
-/**
- * ***********************************************************************
- *
- * Un petit Logo minimal qui devra etre ameliore par la suite
- *
- * J. Ferber - 1999-2001
- *
- * Cours de DESS TNI - Montpellier II
- *
- * @version 2.0
- * @date 25/09/
- *
- *
- *************************************************************************
- */
 public class SimpleLogo extends JFrame implements Observer {
 
     public static final Dimension VGAP = new Dimension(1, 5);
     public static final Dimension HGAP = new Dimension(5, 1);
-    
-    public static final int WIDTH = 600;
-    public static final int HEIGTH = 400;
 
     private FeuilleDessin feuille;
     private Tortue courante;
     private JTextField inputValue;
     private Controleur controleur;
     private JComboBox colorList;
-    
+
     private JTextField inputName;
 
     public FeuilleDessin getFeuille() {
@@ -49,14 +31,13 @@ public class SimpleLogo extends JFrame implements Observer {
     }
 
     public SimpleLogo(Controleur controleur) {
-        super("un logo tout simple");
-        this.setLocationRelativeTo(null);
+        super("Jeu de tortues");
         this.controleur = controleur;
         this.courante = controleur.getJeu().getTortueCourante();
         this.logoInit();
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
         addMouseListener(controleur);
-        
 
         addWindowListener(new WindowAdapter() {
             @Override
@@ -79,14 +60,13 @@ public class SimpleLogo extends JFrame implements Observer {
 
         addButton(toolBar, "Effacer", "Nouveau dessin", "/icons/index.png");
 
+        toolBar.setFloatable(false);
         toolBar.add(Box.createRigidArea(HGAP));
         inputValue = new JTextField("45", 5);
         toolBar.add(inputValue);
         addButton(toolBar, "Avancer", "Avancer 50", null);
         addButton(toolBar, "Droite", "Droite 45", null);
         addButton(toolBar, "Gauche", "Gauche 45", null);
-
-
 
         // Create the combo box
         toolBar.add(Box.createRigidArea(HGAP));
@@ -95,16 +75,14 @@ public class SimpleLogo extends JFrame implements Observer {
         colorList = new JComboBox(Couleur.colorStrings);
         toolBar.add(colorList);
 
-        
         JLabel nom = new JLabel(" Nom : ");
         toolBar.add(nom);
         setInputName(new JTextField(5));
         toolBar.add(getInputName());
-        
-        addButton(toolBar, "Ajouter", "Ajouter Tortue", null);
-        
-        addButton(toolBar, "Jouer", "Jouer partie", null);
 
+        addButton(toolBar, "Ajouter", "Ajouter Tortue", null);
+
+        addButton(toolBar, "Jouer", "Jouer partie", null);
 
         // Menus
         JMenuBar menubar = new JMenuBar();
@@ -128,10 +106,10 @@ public class SimpleLogo extends JFrame implements Observer {
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        feuille = new FeuilleDessin(); //500, 400);
+        feuille = new FeuilleDessin();
         feuille.setBackground(Color.white);
-        feuille.setSize(new Dimension(WIDTH, HEIGHT));
-        feuille.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        feuille.setSize(new Dimension(800, 600));
+        feuille.setPreferredSize(new Dimension(800, 600));
 
         getContentPane().add(feuille, "Center");
 
@@ -194,44 +172,26 @@ public class SimpleLogo extends JFrame implements Observer {
         this.getFeuille().repaint();
     }
 
-    /**
-     * @return the inputName
-     */
     public JTextField getInputName() {
         return inputName;
     }
 
-    /**
-     * @param inputName the inputName to set
-     */
     public void setInputName(JTextField inputName) {
         this.inputName = inputName;
     }
 
-    /**
-     * @return the colorList
-     */
     public JComboBox getColorList() {
         return colorList;
     }
 
-    /**
-     * @param colorList the colorList to set
-     */
     public void setColorList(JComboBox colorList) {
         this.colorList = colorList;
     }
 
-    /**
-     * @return the courante
-     */
     public Tortue getCourante() {
         return courante;
     }
 
-    /**
-     * @param courante the courante to set
-     */
     public void setCourante(Tortue courante) {
         this.courante = courante;
     }
