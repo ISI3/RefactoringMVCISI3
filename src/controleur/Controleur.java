@@ -81,7 +81,7 @@ public class Controleur extends MouseAdapter implements ActionListener {
                 t.notifyObservers();
                 break;
             case "Jouer":
-                simpleLogo.getFeuille().reset();                
+                simpleLogo.getFeuille().reset();
                 jeuDeBalle = JeuFactory.creerJeuDeBalle(6);
                 this.jeu = jeuDeBalle.getJeu();
                 this.jeu.getTortueCourante().addObserver(simpleLogo);
@@ -123,33 +123,20 @@ public class Controleur extends MouseAdapter implements ActionListener {
         }
     }
 
-    /**
-     * @return the jeu
-     */
     public Jeu getJeu() {
         return jeu;
     }
 
-    /**
-     * @param jeu the jeu to set
-     */
     public void setJeu(Jeu jeu) {
         this.jeu = jeu;
     }
 
-    /**
-     * @return the jeuDeBalle
-     */
     public JeuDeBalle getJeuDeBalle() {
         return jeuDeBalle;
     }
 
-    /**
-     * @param jeuDeBalle the jeuDeBalle to set
-     */
     public void setJeuDeBalle(JeuDeBalle jeuDeBalle) {
         this.jeuDeBalle = jeuDeBalle;
     }
-
 
 }

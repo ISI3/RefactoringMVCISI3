@@ -4,7 +4,8 @@ import java.awt.Graphics;
 import modele.Tortue;
 
 public abstract class AbstractTortue {
-     private Tortue tortue;
+
+    private Tortue tortue;
 
     public Tortue getTortue() {
         return tortue;
@@ -15,5 +16,5 @@ public abstract class AbstractTortue {
     }
 
     public abstract void draw(Graphics g);
-    
+
 }

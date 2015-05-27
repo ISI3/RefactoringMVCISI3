@@ -3,24 +3,6 @@ package modele;
 import java.awt.Color;
 import java.util.Observable;
 
-/**
- * ***********************************************************************
- *
- * Un petit Logo minimal qui devra etre ameliore par la suite
- *
- * Source originale : J. Ferber - 1999-2001
- *
- * Cours de DESS TNI - Montpellier II
- *
- * @version 2.0
- * @date 25/09/2001
- *
- *************************************************************************
- */
-/**
- * La classe Tortue qui se deplace en coordonnees polaires
- *
- */
 public class Tortue extends Observable {
 
     private PositionTortue positionTortue;
@@ -52,7 +34,7 @@ public class Tortue extends Observable {
     public void setDirection(double direction) {
         this.direction = direction;
     }
-    
+
     public Tortue(PositionTortue position, double direction, Color couleur) {
         this.positionTortue = position;
         this.direction = direction;
@@ -107,23 +89,17 @@ public class Tortue extends Observable {
         this.notifyObservers();
     }
 
-    /**
-     * @return the couleur
-     */
     public Color getCouleur() {
         return couleur;
     }
 
-    /**
-     * @param couleur the couleur to set
-     */
     public void setCouleur(Color couleur) {
         this.couleur = couleur;
     }
-    
-    public double getDistance(double x, double y){
-        System.out.println("Distance : "+Math.sqrt(Math.pow(y - this.getPosition().getY(), 2) + Math.pow(x - this.getPosition().getX(), 2)));
-         return (Math.sqrt(Math.pow(y - this.getPosition().getY(), 2) + Math.pow(x - this.getPosition().getX(), 2)));
+
+    public double getDistance(double x, double y) {
+        System.out.println("Distance : " + Math.sqrt(Math.pow(y - this.getPosition().getY(), 2) + Math.pow(x - this.getPosition().getX(), 2)));
+        return (Math.sqrt(Math.pow(y - this.getPosition().getY(), 2) + Math.pow(x - this.getPosition().getX(), 2)));
     }
 
 }

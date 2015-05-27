@@ -1,15 +1,13 @@
 package vue;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Polygon;
 import modele.Tortue;
 import modele.TortueAmelioree;
 
+public class VueTortue extends AbstractTortue {
 
-public class VueTortue extends AbstractTortue{
-    
     protected static final int rp = 10, rb = 5;
 
     public VueTortue(Tortue tortue) {
@@ -43,13 +41,14 @@ public class VueTortue extends AbstractTortue{
         arrow.addPoint((int) Math.round(p2.x - r * Math.cos(theta - alpha)),
                 (int) Math.round(p2.y + r * Math.sin(theta - alpha)));
 
-        arrow.addPoint(p2.x, p2.y);        
+        arrow.addPoint(p2.x, p2.y);
         g.setColor(super.getTortue().getCouleur());
         g.fillPolygon(arrow);
-        
-        if(super.getTortue() instanceof TortueAmelioree){
+
+        if (super.getTortue() instanceof TortueAmelioree) {
             TortueAmelioree to = (TortueAmelioree) super.getTortue();
             g.drawString(to.getNom(), to.getPosition().getX() + 10, to.getPosition().getY());
-        }    }
-    
+        }
+    }
+
 }
