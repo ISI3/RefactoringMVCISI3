@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.Observable;
 import java.util.Observer;
+import modele.Couleur;
 import modele.Tortue;
 
 /**
@@ -32,6 +33,7 @@ public class SimpleLogo extends JFrame implements Observer {
     private Tortue courante;
     private JTextField inputValue;
     private Controleur controleur;
+    private JComboBox colorList;
     
     private JTextField inputName;
 
@@ -80,24 +82,22 @@ public class SimpleLogo extends JFrame implements Observer {
         addButton(toolBar, "Lever", "Lever Crayon", null);
         addButton(toolBar, "Baisser", "Baisser Crayon", null);
 
-        String[] colorStrings = {"noir", "bleu", "cyan", "gris fonce", "rouge",
-            "vert", "gris clair", "magenta", "orange",
-            "gris", "rose", "jaune"};
+
 
         // Create the combo box
         toolBar.add(Box.createRigidArea(HGAP));
         JLabel colorLabel = new JLabel("   Couleur: ");
         toolBar.add(colorLabel);
-        JComboBox colorList = new JComboBox(colorStrings);
+        colorList = new JComboBox(Couleur.colorStrings);
         toolBar.add(colorList);
 
-        colorList.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                JComboBox cb = (JComboBox) e.getSource();
-                int n = cb.getSelectedIndex();
-                //courante.setColor(n);
-            }
-        });
+//        colorList.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                JComboBox cb = (JComboBox) e.getSource();
+//                int n = cb.getSelectedIndex();
+//                //courante.setColor(n);
+//            }
+//        });
         
         JLabel nom = new JLabel(" Nom : ");
         toolBar.add(nom);
@@ -223,5 +223,19 @@ public class SimpleLogo extends JFrame implements Observer {
      */
     public void setInputName(JTextField inputName) {
         this.inputName = inputName;
+    }
+
+    /**
+     * @return the colorList
+     */
+    public JComboBox getColorList() {
+        return colorList;
+    }
+
+    /**
+     * @param colorList the colorList to set
+     */
+    public void setColorList(JComboBox colorList) {
+        this.colorList = colorList;
     }
 }

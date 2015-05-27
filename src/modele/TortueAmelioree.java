@@ -37,6 +37,8 @@ public class TortueAmelioree extends Tortue {
         }
     }
     
+    
+    
     public TortueAmelioree(PositionTortue position, double direction, Color couleur, String nom){
         super(position, direction, couleur);
         NUMERO++;

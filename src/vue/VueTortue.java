@@ -51,8 +51,8 @@ public class VueTortue extends AbstractTortue{
         arrow.addPoint((int) Math.round(p2.x - r * Math.cos(theta - alpha)),
                 (int) Math.round(p2.y + r * Math.sin(theta - alpha)));
 
-        arrow.addPoint(p2.x, p2.y);
-        g.setColor(Color.green);
+        arrow.addPoint(p2.x, p2.y);        
+        g.setColor(super.getTortue().getCouleur());
         g.fillPolygon(arrow);
         
         if(super.getTortue() instanceof TortueAmelioree){

@@ -68,6 +68,7 @@ public class Controleur implements ActionListener {
             case "Ajouter":  
                 System.out.println("Ajouter");
                 TortueAmelioree t = new TortueAmelioree(simpleLogo.getInputName().getText());
+                t.setCouleur(Couleur.decodeColor(simpleLogo.getColorList().getSelectedItem().toString()));
                 t.getListTortuesConnues().addAll(jeu.getTortues());
                 this.getJeu().addTortue(t);
                 this.getJeu().setTortueCourante(t);
