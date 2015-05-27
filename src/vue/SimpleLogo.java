@@ -51,6 +51,8 @@ public class SimpleLogo extends JFrame implements Observer {
         this.courante = controleur.getJeu().getTortueCourante();
         this.logoInit();
         this.setVisible(true);
+        addMouseListener(controleur);
+        
 
         addWindowListener(new WindowAdapter() {
             @Override
@@ -153,7 +155,7 @@ public class SimpleLogo extends JFrame implements Observer {
         getContentPane().add(feuille, "Center");
 
         // Deplacement de la tortue au centre de la feuille
-        feuille.addTortue(new VueTortue(this.courante));
+        feuille.addTortue(new VueTortue(this.getCourante()));
         pack();
         setVisible(true);
     }
@@ -237,5 +239,19 @@ public class SimpleLogo extends JFrame implements Observer {
      */
     public void setColorList(JComboBox colorList) {
         this.colorList = colorList;
+    }
+
+    /**
+     * @return the courante
+     */
+    public Tortue getCourante() {
+        return courante;
+    }
+
+    /**
+     * @param courante the courante to set
+     */
+    public void setCourante(Tortue courante) {
+        this.courante = courante;
     }
 }

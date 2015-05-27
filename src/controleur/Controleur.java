@@ -4,8 +4,10 @@ import modele.*;
 import vue.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-public class Controleur implements ActionListener {
+public class Controleur extends MouseAdapter implements ActionListener  {
 
     private SimpleLogo simpleLogo;
     private Jeu jeu;
@@ -77,8 +79,31 @@ public class Controleur implements ActionListener {
                 t.notifyObservers();
                 break;
         }
-
         simpleLogo.getFeuille().repaint();
+    }
+    
+    @Override
+    public void mouseClicked(MouseEvent e){
+        double x = e.getPoint().getX();
+        double y = e.getPoint().getY();
+        boolean find = false;
+        int i =0;
+        if(jeu.getTortues() != null && !jeu.getTortues().isEmpty()){
+                    System.out.println("je clique!");
+
+            while(!find && i<jeu.getTortues().size()){
+                Tortue t = jeu.getTortues().get(i);
+                if(t.getDistance(x - simpleLogo.getFeuille().getX()-7, y - simpleLogo.getFeuille().getY()-50)<10){
+                   this.jeu.setTortueCourante(t);
+                   this.simpleLogo.setCourante(t);
+                   find = true;
+                   System.out.println("je selectionne la nouvelle tortue !");
+               }else{
+                   System.out.println("tu cliques sur aucune tortue !");
+                }
+                i++;
+            }
+        }
     }
 
     /**

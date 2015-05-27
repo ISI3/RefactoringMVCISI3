@@ -120,5 +120,10 @@ public class Tortue extends Observable {
     public void setCouleur(Color couleur) {
         this.couleur = couleur;
     }
+    
+    public double getDistance(double x, double y){
+        System.out.println("Distance : "+Math.sqrt(Math.pow(y - this.getPosition().getY(), 2) + Math.pow(x - this.getPosition().getX(), 2)));
+         return (Math.sqrt(Math.pow(y - this.getPosition().getY(), 2) + Math.pow(x - this.getPosition().getX(), 2)));
+    }
 
 }

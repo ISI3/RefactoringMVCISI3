@@ -20,6 +20,7 @@ public class Jeu extends Observable {
 	
 	public Jeu(Tortue t){
 		this.tortues = new ArrayList<>();
+                addTortue(t);
                 this.tortueCourante = t;
 	}
 	

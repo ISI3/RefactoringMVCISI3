@@ -30,7 +30,7 @@ public class TortueAmelioree extends Tortue {
         super();
         NUMERO++;
         this.listTortuesConnues = new ArrayList<Tortue>();
-        if(nom != null && nom != ""){
+        if(nom != null && nom != "" && !nom.isEmpty()){
             this.nom = nom;
         }else{
             this.nom = "Tortue "+NUMERO;
@@ -58,18 +58,34 @@ public class TortueAmelioree extends Tortue {
         }
     }
     
+
+    
     private double getDistance(Tortue t){
-         return (Math.sqrt(Math.pow(t.getPosition().getY() - super.getPosition().getY(), 2) + Math.pow(t.getPosition().getX() - super.getPosition().getX(), 2)));
+         return super.getDistance(t.getPosition().getX(), t.getPosition().getY());
     }
     
     private void voisin(){
         for (Tortue t : listTortuesConnues){
             if (this.getDistance(t) <= 15){
-		System.out.println(this.getNom() + " saute "+((TortueAmelioree)t).getNom()+"!");
-//		t.droite(45); t.avancer(10); //Est ce qu'il faut faire ça ?
+                System.out.println("coucou");
+                if(this instanceof TortueAmelioree){
+                    if(t instanceof TortueAmelioree){
+                        System.out.println(this.getNom() + " saute "+((TortueAmelioree)t).getNom()+"!");
+                    }else{
+                        System.out.println(this.getNom() + " saute une tortue non améliorée");
+                    }
+                }else{
+                    if(t instanceof TortueAmelioree){
+                        System.out.println("Je saute "+((TortueAmelioree)t).getNom()+"!");
+                    }else{
+                        System.out.println("Deux tortues de base se sautent");
+                    }
+                }		
+		t.droite(Utils.random(0, 360)); t.avancer(Utils.random(10, 150));
             }
 	}
     }
+    
 
     /**
      * @return the listTortues
