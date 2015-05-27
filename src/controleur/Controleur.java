@@ -78,12 +78,15 @@ public class Controleur extends MouseAdapter implements ActionListener  {
                 simpleLogo.getFeuille().addTortue(new VueTortue(t));
                 t.notifyObservers();
                 break;
+            case "Jouer":
+                //TODO
+                break;
         }
         simpleLogo.getFeuille().repaint();
     }
     
     @Override
-    public void mouseClicked(MouseEvent e){
+    public void mousePressed(MouseEvent e){
         double x = e.getPoint().getX();
         double y = e.getPoint().getY();
         boolean find = false;
@@ -93,6 +96,7 @@ public class Controleur extends MouseAdapter implements ActionListener  {
 
             while(!find && i<jeu.getTortues().size()){
                 Tortue t = jeu.getTortues().get(i);
+                //Calibrer le panel dans la fenetre 
                 if(t.getDistance(x - simpleLogo.getFeuille().getX()-7, y - simpleLogo.getFeuille().getY()-50)<10){
                    this.jeu.setTortueCourante(t);
                    this.simpleLogo.setCourante(t);

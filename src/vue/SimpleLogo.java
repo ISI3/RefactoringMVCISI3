@@ -47,6 +47,7 @@ public class SimpleLogo extends JFrame implements Observer {
 
     public SimpleLogo(Controleur controleur) {
         super("un logo tout simple");
+        this.setLocationRelativeTo(null);
         this.controleur = controleur;
         this.courante = controleur.getJeu().getTortueCourante();
         this.logoInit();
@@ -81,8 +82,6 @@ public class SimpleLogo extends JFrame implements Observer {
         addButton(toolBar, "Avancer", "Avancer 50", null);
         addButton(toolBar, "Droite", "Droite 45", null);
         addButton(toolBar, "Gauche", "Gauche 45", null);
-        addButton(toolBar, "Lever", "Lever Crayon", null);
-        addButton(toolBar, "Baisser", "Baisser Crayon", null);
 
 
 
@@ -93,13 +92,6 @@ public class SimpleLogo extends JFrame implements Observer {
         colorList = new JComboBox(Couleur.colorStrings);
         toolBar.add(colorList);
 
-//        colorList.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                JComboBox cb = (JComboBox) e.getSource();
-//                int n = cb.getSelectedIndex();
-//                //courante.setColor(n);
-//            }
-//        });
         
         JLabel nom = new JLabel(" Nom : ");
         toolBar.add(nom);
@@ -107,6 +99,8 @@ public class SimpleLogo extends JFrame implements Observer {
         toolBar.add(getInputName());
         
         addButton(toolBar, "Ajouter", "Ajouter Tortue", null);
+        
+        addButton(toolBar, "Jouer", "Jouer partie", null);
 
 
         // Menus
@@ -123,8 +117,6 @@ public class SimpleLogo extends JFrame implements Observer {
         addMenuItem(menuCommandes, "Avancer", "Avancer", -1);
         addMenuItem(menuCommandes, "Droite", "Droite", -1);
         addMenuItem(menuCommandes, "Gauche", "Gauche", -1);
-        addMenuItem(menuCommandes, "Lever Crayon", "Lever", -1);
-        addMenuItem(menuCommandes, "Baisser Crayon", "Baisser", -1);
 
         JMenu menuHelp = new JMenu("Aide"); // on installe le premier menu
         menubar.add(menuHelp);
@@ -132,20 +124,6 @@ public class SimpleLogo extends JFrame implements Observer {
         addMenuItem(menuHelp, "A propos", "About", -1);
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-        // les boutons du bas
-        JPanel p2 = new JPanel(new GridLayout());
-        JButton b20 = new JButton("Proc1");
-        p2.add(b20);
-        b20.addActionListener(controleur);
-        JButton b21 = new JButton("Proc2");
-        p2.add(b21);
-        b21.addActionListener(controleur);
-        JButton b22 = new JButton("Proc3");
-        p2.add(b22);
-        b22.addActionListener(controleur);
-
-        getContentPane().add(p2, "South");
 
         feuille = new FeuilleDessin(); //500, 400);
         feuille.setBackground(Color.white);
