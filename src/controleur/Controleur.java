@@ -7,10 +7,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Controleur extends MouseAdapter implements ActionListener  {
+public class Controleur extends MouseAdapter implements ActionListener {
+
+    public static boolean SIMULATION_ON = false;
 
     private SimpleLogo simpleLogo;
     private Jeu jeu;
+    private JeuDeBalle jeuDeBalle;
 
     public SimpleLogo getSimpleLogo() {
         return simpleLogo;
@@ -23,7 +26,6 @@ public class Controleur extends MouseAdapter implements ActionListener  {
         tortue.addObserver(simpleLogo);
         this.jeu.addObserver(simpleLogo);
     }
-    
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -67,7 +69,7 @@ public class Controleur extends MouseAdapter implements ActionListener  {
             case "Quitter":
                 simpleLogo.quitter();
                 break;
-            case "Ajouter":  
+            case "Ajouter":
                 System.out.println("Ajouter");
                 TortueAmelioree t = new TortueAmelioree(simpleLogo.getInputName().getText());
                 t.setCouleur(Couleur.decodeColor(simpleLogo.getColorList().getSelectedItem().toString()));
@@ -79,31 +81,43 @@ public class Controleur extends MouseAdapter implements ActionListener  {
                 t.notifyObservers();
                 break;
             case "Jouer":
-                //TODO
+                simpleLogo.getFeuille().reset();
+                
+                jeuDeBalle = JeuFactory.creerJeuDeBalle(6);
+                this.jeu = jeuDeBalle.getJeu();
+                this.jeu.getTortueCourante().addObserver(simpleLogo);
+                for (Tortue tor : jeu.getTortues()) {
+                    tor.addObserver(simpleLogo);
+                    simpleLogo.getFeuille().addTortue(new VueTortue(tor));
+                    tor.notifyObservers();
+                }
+                getJeuDeBalle().addObserver(simpleLogo);
+                simpleLogo.getFeuille().addTortue(new VueTortueBalle(getJeuDeBalle().getJeu().getTortueBalle()));
+                new Thread(getJeuDeBalle()).start();
                 break;
         }
         simpleLogo.getFeuille().repaint();
     }
-    
+
     @Override
-    public void mousePressed(MouseEvent e){
+    public void mousePressed(MouseEvent e) {
         double x = e.getPoint().getX();
         double y = e.getPoint().getY();
         boolean find = false;
-        int i =0;
-        if(jeu.getTortues() != null && !jeu.getTortues().isEmpty()){
-                    System.out.println("je clique!");
+        int i = 0;
+        if (jeu.getTortues() != null && !jeu.getTortues().isEmpty()) {
+            System.out.println("je clique!");
 
-            while(!find && i<jeu.getTortues().size()){
+            while (!find && i < jeu.getTortues().size()) {
                 Tortue t = jeu.getTortues().get(i);
                 //Calibrer le panel dans la fenetre 
-                if(t.getDistance(x - simpleLogo.getFeuille().getX()-7, y - simpleLogo.getFeuille().getY()-50)<10){
-                   this.jeu.setTortueCourante(t);
-                   this.simpleLogo.setCourante(t);
-                   find = true;
-                   System.out.println("je selectionne la nouvelle tortue !");
-               }else{
-                   System.out.println("tu cliques sur aucune tortue !");
+                if (t.getDistance(x - simpleLogo.getFeuille().getX() - 7, y - simpleLogo.getFeuille().getY() - 50) < 10) {
+                    this.jeu.setTortueCourante(t);
+                    this.simpleLogo.setCourante(t);
+                    find = true;
+                    System.out.println("je selectionne la nouvelle tortue !");
+                } else {
+                    System.out.println("tu cliques sur aucune tortue !");
                 }
                 i++;
             }
@@ -123,4 +137,20 @@ public class Controleur extends MouseAdapter implements ActionListener  {
     public void setJeu(Jeu jeu) {
         this.jeu = jeu;
     }
+
+    /**
+     * @return the jeuDeBalle
+     */
+    public JeuDeBalle getJeuDeBalle() {
+        return jeuDeBalle;
+    }
+
+    /**
+     * @param jeuDeBalle the jeuDeBalle to set
+     */
+    public void setJeuDeBalle(JeuDeBalle jeuDeBalle) {
+        this.jeuDeBalle = jeuDeBalle;
+    }
+
+
 }

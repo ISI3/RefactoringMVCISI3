@@ -1,5 +1,6 @@
 package modele;
 
+import controleur.Controleur;
 import java.util.Observable;
 import java.util.Random;
 import java.util.logging.Level;
@@ -22,16 +23,16 @@ public class JeuDeBalle extends Observable implements Runnable {
     @Override
     public void run() {
         Random rand = new Random();
-        //  while (Controler.SIMULATION_ON) {
-        for (Tortue t : this.jeu.getTortues()) {
-            if (t != this.jeu.getTortueBalle() && t != this.jeu.getTortueCourante()) {
-                if (rand.nextInt(6) > 1) {
-                    t.avancer(5);
-                } else {
-                    t.gauche(rand.nextInt(360));
+        while (Controleur.SIMULATION_ON) {
+            for (Tortue t : this.jeu.getTortues()) {
+                if (t != this.jeu.getTortueBalle() && t != this.jeu.getTortueCourante()) {
+                    if (rand.nextInt(6) > 1) {
+                        t.avancer(5);
+                    } else {
+                        t.gauche(rand.nextInt(360));
+                    }
                 }
             }
-            //           }
             try {
                 Thread.sleep(100);
             } catch (InterruptedException ex) {
@@ -70,7 +71,7 @@ public class JeuDeBalle extends Observable implements Runnable {
                 }
                 passe = !passe;
             }
-        }).start();;
+        }).start();
     }
 
 }

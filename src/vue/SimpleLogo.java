@@ -28,6 +28,9 @@ public class SimpleLogo extends JFrame implements Observer {
 
     public static final Dimension VGAP = new Dimension(1, 5);
     public static final Dimension HGAP = new Dimension(5, 1);
+    
+    public static final int WIDTH = 600;
+    public static final int HEIGTH = 400;
 
     private FeuilleDessin feuille;
     private Tortue courante;
@@ -127,8 +130,8 @@ public class SimpleLogo extends JFrame implements Observer {
 
         feuille = new FeuilleDessin(); //500, 400);
         feuille.setBackground(Color.white);
-        feuille.setSize(new Dimension(600, 400));
-        feuille.setPreferredSize(new Dimension(600, 400));
+        feuille.setSize(new Dimension(WIDTH, HEIGHT));
+        feuille.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 
         getContentPane().add(feuille, "Center");
 
