@@ -3,11 +3,13 @@ package vue;
 import java.awt.*;
 import javax.swing.*;
 import java.util.*;
+import modele.TortueBalle;
 
 public class FeuilleDessin extends JPanel {
 
     private ArrayList<AbstractTortue> tortues; // la liste des tortues enregistrees
     protected static final int rp = 10, rb = 5; // Taille de la pointe et de la base de la fleche
+    private VueTortueBalle balle;
 
     public FeuilleDessin() {
         tortues = new ArrayList<>();
@@ -15,6 +17,10 @@ public class FeuilleDessin extends JPanel {
 
     public void addTortue(AbstractTortue t) {
         tortues.add(t);
+    }
+
+    public void remove() {
+        tortues.clear();
     }
 
     public void reset() {
@@ -35,12 +41,31 @@ public class FeuilleDessin extends JPanel {
         g.setColor(c);
 
         showTurtles(g);
+
+        //Show balle
+        if (balle != null) {
+            balle.draw(g);
+        }
     }
 
     public void showTurtles(Graphics g) {
         for (AbstractTortue t : tortues) {
             t.draw(g);
         }
+    }
+
+    /**
+     * @return the balle
+     */
+    public VueTortueBalle getBalle() {
+        return balle;
+    }
+
+    /**
+     * @param balle the balle to set
+     */
+    public void setBalle(VueTortueBalle balle) {
+        this.balle = balle;
     }
 
 }

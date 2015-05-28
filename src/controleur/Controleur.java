@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 public class Controleur extends MouseAdapter implements ActionListener {
 
@@ -81,8 +82,8 @@ public class Controleur extends MouseAdapter implements ActionListener {
                 t.notifyObservers();
                 break;
             case "Jouer":
-                simpleLogo.getFeuille().reset();
-                jeuDeBalle = JeuFactory.creerJeuDeBalle(6);
+                simpleLogo.getFeuille().remove();
+                jeuDeBalle = JeuFactory.creerJeuDeBalle(Integer.parseInt(simpleLogo.getInputValue()));
                 this.jeu = jeuDeBalle.getJeu();
                 this.jeu.getTortueCourante().addObserver(simpleLogo);
                 for (Tortue tor : jeu.getTortues()) {
@@ -90,8 +91,10 @@ public class Controleur extends MouseAdapter implements ActionListener {
                     simpleLogo.getFeuille().addTortue(new VueTortue(tor));
                     tor.notifyObservers();
                 }
-                getJeuDeBalle().addObserver(simpleLogo);
-                simpleLogo.getFeuille().addTortue(new VueTortueBalle(getJeuDeBalle().getJeu().getTortueBalle()));
+                this.jeu.getTortueBalle().addObserver(simpleLogo);
+                simpleLogo.getFeuille().setBalle(new VueTortueBalle(getJeuDeBalle().getJeu().getTortueBalle()));
+                getJeuDeBalle().getJeu().getTortueBalle().notifyObservers();
+                JEU_EN_COURS = true;
                 new Thread(getJeuDeBalle()).start();
                 break;
         }

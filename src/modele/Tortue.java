@@ -62,7 +62,6 @@ public class Tortue extends Observable {
     public void avancer(int dist) {
         int x = (int) Math.round(positionTortue.getX() + dist * Math.cos(ratioDegRad * direction));
         int y = (int) Math.round(positionTortue.getY() + dist * Math.sin(ratioDegRad * direction));
-        System.out.println(x);
         positionTortue.setX(x);
         positionTortue.setY(y);
         this.setChanged();
@@ -98,7 +97,6 @@ public class Tortue extends Observable {
     }
 
     public double getDistance(double x, double y) {
-        System.out.println("Distance : " + Math.sqrt(Math.pow(y - this.getPosition().getY(), 2) + Math.pow(x - this.getPosition().getX(), 2)));
         return (Math.sqrt(Math.pow(y - this.getPosition().getY(), 2) + Math.pow(x - this.getPosition().getX(), 2)));
     }
 

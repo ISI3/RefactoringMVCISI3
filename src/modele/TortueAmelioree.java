@@ -2,8 +2,11 @@ package modele;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TortueAmelioree extends Tortue {
+
+    public static boolean AFFICHER_VOISIN = true;
 
     public static int NUMERO = 0;
 
@@ -46,6 +49,17 @@ public class TortueAmelioree extends Tortue {
         }
     }
 
+    public TortueAmelioree(PositionTortue position, double direction, Color couleur, String nom, List<Tortue> tortuesConnues) {
+        super(position, direction, couleur);
+        NUMERO++;
+        this.listTortuesConnues = (ArrayList<Tortue>) tortuesConnues;
+        if (nom != null && nom != "" && !nom.isEmpty()) {
+            this.nom = nom;
+        } else {
+            this.nom = "Tortue " + NUMERO;
+        }
+    }
+
     public void removeTortue(Tortue t) {
         if (getListTortuesConnues() != null && getListTortuesConnues().contains(t)) {
             getListTortuesConnues().remove(t);
@@ -63,23 +77,25 @@ public class TortueAmelioree extends Tortue {
     }
 
     private void voisin() {
-        for (Tortue t : listTortuesConnues) {
-            if (this.getDistance(t) <= 15) {
-                if (this instanceof TortueAmelioree) {
-                    if (t instanceof TortueAmelioree) {
-                        System.out.println(this.getNom() + " saute " + ((TortueAmelioree) t).getNom() + "!");
+        if (AFFICHER_VOISIN) {
+            for (Tortue t : listTortuesConnues) {
+                if (this.getDistance(t) <= 15) {
+                    if (this instanceof TortueAmelioree) {
+                        if (t instanceof TortueAmelioree) {
+                            System.out.println(this.getNom() + " saute " + ((TortueAmelioree) t).getNom() + "!");
+                        } else {
+                            System.out.println(this.getNom() + " saute une tortue non améliorée");
+                        }
                     } else {
-                        System.out.println(this.getNom() + " saute une tortue non améliorée");
+                        if (t instanceof TortueAmelioree) {
+                            System.out.println("Je saute " + ((TortueAmelioree) t).getNom() + "!");
+                        } else {
+                            System.out.println("Deux tortues de base se sautent");
+                        }
                     }
-                } else {
-                    if (t instanceof TortueAmelioree) {
-                        System.out.println("Je saute " + ((TortueAmelioree) t).getNom() + "!");
-                    } else {
-                        System.out.println("Deux tortues de base se sautent");
-                    }
+                    t.droite(Utilitaire.random(0, 360));
+                    t.avancer(Utilitaire.random(10, 150));
                 }
-                t.droite(Utilitaire.random(0, 360));
-                t.avancer(Utilitaire.random(10, 150));
             }
         }
     }

@@ -1,5 +1,6 @@
 package modele;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 public class JeuFactory {
@@ -29,10 +30,12 @@ public class JeuFactory {
         }
 
         // Set la tortue courante dans le jeu
-        jeu.setTortueCourante(jeu.getTortues().get(Utilitaire.random(0, jeu.getTortues().size())));
-        TortueBalle ball = new TortueBalle();
+        TortueAmelioree ta = (TortueAmelioree) jeu.getTortues().get(Utilitaire.random(0, jeu.getTortues().size()));
+        jeu.setTortueCourante(ta);
+        TortueBalle balle = new TortueBalle(ta.getPosition(), Color.BLACK, ta);
+        
         // Set la tortue ball dans le jeu
-        jeu.setTortueBalle(ball);
+        jeu.setTortueBalle(balle);
 
         return new JeuDeBalle(jeu);
     }
